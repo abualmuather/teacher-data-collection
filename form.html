@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج بيانات المعلمين</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+        }
+        .form-input.invalid {
+            border-color: #ef4444; /* red-500 */
+            box-shadow: 0 0 0 2px #fecaca; /* red-200 */
+        }
+        .form-input.valid {
+            border-color: #22c55e; /* green-500 */
+            box-shadow: 0 0 0 2px #bbf7d0; /* green-200 */
+        }
+        .blinking-warning {
+            animation: blinker 1.5s linear infinite;
+        }
+        @keyframes blinker {
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="container mx-auto max-w-3xl">
+        
+        <!-- Firebase Configuration Warning -->
+        <div id="firebase-warning" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mb-6 shadow-lg hidden">
+            <div class="flex">
+                <div class="py-1"><i class="fas fa-exclamation-triangle text-xl mr-4 blinking-warning"></i></div>
+                <div>
+                    <p class="font-bold">تنبيه إعدادات مهم!</p>
+                    <p class="text-sm">لم يتم إعداد قاعدة البيانات بعد. يرجى نسخ إعدادات Firebase الخاصة بك في الكود لتفعيل حفظ البيانات.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="form-wrapper">
+            <div id="form-container" class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl transition-all duration-500">
+                <header class="text-center mb-8">
+                    <div class="w-20 h-20 bg-blue-600 text-white rounded-full mx-auto flex items-center justify-center mb-4">
+                        <i class="fas fa-user-graduate text-4xl"></i>
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">نموذج تسجيل بيانات المعلمين</h1>
+                    <p class="text-gray-600 mt-2">يرجى تعبئة الحقول التالية بدقة. شكراً لتعاونكم.</p>
+                </header>
+                <form id="teacher-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Form fields -->
+                    <div class="md:col-span-2">
+                        <label for="fullName" class="block mb-2 font-medium text-gray-700">الاسم الكامل</label>
+                        <input type="text" id="fullName" name="الاسم الكامل" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                    <div>
+                        <label for="civilId" class="block mb-2 font-medium text-gray-700">الرقم المدني</label>
+                        <!-- The 'pattern' and 'title' attributes have been removed from the input below -->
+                        <input type="text" id="civilId" name="الرقم المدني" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 font-medium text-gray-700">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="رقم الهاتف" pattern="[0-9]{8,15}" title="أدخل رقم هاتف صحيح" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="email" class="block mb-2 font-medium text-gray-700">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="البريد الإلكتروني" class="form-input w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" required>
+                    </div>
+                    <!-- Other fields -->
+                    <div>
+                        <label for="qualification" class="block mb-2 font-medium text-gray-700">المؤهل الدراسي</label>
+                        <input type="text" id="qualification" name="المؤهل الدراسي" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="specialization" class="block mb-2 font-medium text-gray-700">التخصص</label>
+                        <input type="text" id="specialization" name="التخصص" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="graduationYear" class="block mb-2 font-medium text-gray-700">سنة التخرج</label>
+                        <input type="number" id="graduationYear" name="سنة التخرج" class="form-input w-full p-3 border border-gray-300 rounded-lg" min="1950" max="2050" required>
+                    </div>
+                    <div>
+                        <label for="university" class="block mb-2 font-medium text-gray-700">الجامعة/الكلية</label>
+                        <input type="text" id="university" name="الجامعة/الكلية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="experienceYears" class="block mb-2 font-medium text-gray-700">سنوات الخبرة</label>
+                        <input type="number" id="experienceYears" name="سنوات الخبرة في التدريس" class="form-input w-full p-3 border border-gray-300 rounded-lg" min="0" required>
+                    </div>
+                    <div>
+                        <label for="subjects" class="block mb-2 font-medium text-gray-700">المواد التي يدرسها</label>
+                        <input type="text" id="subjects" name="المواد التي يدرسها" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="schoolLevel" class="block mb-2 font-medium text-gray-700">المرحلة الدراسية</label>
+                        <input type="text" id="schoolLevel" name="المرحلة الدراسية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="currentSchool" class="block mb-2 font-medium text-gray-700">المدرسة الحالية</label>
+                        <input type="text" id="currentSchool" name="اسم المدرسة الحالية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="address" class="block mb-2 font-medium text-gray-700">العنوان</label>
+                        <input type="text" id="address" name="العنوان" class="form-input w-full p-3 border border-gray-300 rounded-lg">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="notes" class="block mb-2 font-medium text-gray-700">ملاحظات</label>
+                        <textarea id="notes" name="ملاحظات" rows="3" class="form-input w-full p-3 border border-gray-300 rounded-lg"></textarea>
+                    </div>
+
+                    <div class="md:col-span-2 text-center mt-4">
+                        <button type="submit" id="submit-btn" class="bg-blue-600 text-white w-full sm:w-auto font-bold py-3 px-16 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>إرسال البيانات
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="success-message" class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl text-center hidden">
+            <div class="text-7xl mb-6 text-green-500">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-3">تم الإرسال بنجاح!</h2>
+            <p class="text-gray-600 text-lg">شكراً لك، لقد تم استلام بياناتك بنجاح.</p>
+        </div>
+    </div>
+
+    <script type="module">
+        // --- Firebase SDK ---
+        // IMPORTANT: These imports are necessary for the page to function.
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // --- Firebase Configuration ---
+        // !!! IMPORTANT: Replace these placeholder values with your actual Firebase config !!!
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // --- DOM Elements ---
+        const formWrapper = document.getElementById('form-wrapper');
+        const successMessage = document.getElementById('success-message');
+        const form = document.getElementById('teacher-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const inputs = document.querySelectorAll('.form-input');
+        const warningDiv = document.getElementById('firebase-warning');
+
+        let db; // Firestore database instance
+
+        // --- Smart Initialization ---
+        // This function checks if the config is valid before initializing Firebase.
+        function initializeFirebase() {
+            if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY") {
+                try {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    console.log("Firebase initialized successfully!");
+                    return true;
+                } catch (error) {
+                    console.error("Firebase initialization failed:", error);
+                    warningDiv.classList.remove('hidden');
+                    warningDiv.querySelector('p.text-sm').textContent = "خطأ في إعدادات Firebase. يرجى مراجعة البيانات التي أدخلتها.";
+                    return false;
+                }
+            } else {
+                // Show the warning if the config is still the placeholder
+                warningDiv.classList.remove('hidden');
+                console.warn("Firebase is not configured.");
+                return false;
+            }
+        }
+
+        const isFirebaseReady = initializeFirebase();
+
+        const headers = [
+            "الاسم الكامل", "الرقم المدني", "رقم الهاتف", "البريد الإلكتروني",
+            "المؤهل الدراسي", "التخصص", "سنة التخرج", "الجامعة/الكلية",
+            "سنوات الخبرة في التدريس", "المواد التي يدرسها", "المرحلة الدراسية",
+            "اسم المدرسة الحالية", "العنوان", "ملاحظات"
+        ];
+        
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.checkValidity()) {
+                    input.classList.add('valid');
+                    input.classList.remove('invalid');
+                } else {
+                    input.classList.add('invalid');
+                    input.classList.remove('valid');
+                }
+            });
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            if (!form.checkValidity()) {
+                inputs.forEach(input => { if (!input.checkValidity()) input.classList.add('invalid'); });
+                alert('يرجى التأكد من تعبئة جميع الحقول المطلوبة بشكل صحيح.');
+                return;
+            }
+
+            // Prevent submission if Firebase is not ready
+            if (!isFirebaseReady) {
+                alert("لا يمكن إرسال البيانات. يرجى التأكد من صحة إعدادات قاعدة البيانات أولاً.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> جاري الإرسال...`;
+
+            const formData = new FormData(form);
+            const teacherData = {};
+            headers.forEach(header => {
+                teacherData[header] = formData.get(header);
+            });
+
+            try {
+                await addDoc(collection(db, "teachers"), teacherData);
+                formWrapper.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("حدث خطأ أثناء إرسال البيانات. يرجى المحاولة مرة أخرى.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fas fa-paper-plane mr-2"></i>إرسال البيانات`;
+            }
+        });
+    </script>
+</body>
+</html>
