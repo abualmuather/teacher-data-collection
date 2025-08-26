@@ -19,7 +19,7 @@
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-    <div class="container mx-auto max-w-3xl">
+    <div class="container mx-auto max-w-4xl">
         <div id="form-wrapper">
             <div id="form-container" class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl transition-all duration-500">
                 <header class="text-center mb-8">
@@ -29,76 +29,30 @@
                     <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">نموذج تسجيل بيانات المعلمين</h1>
                     <p class="text-gray-600 mt-2">يرجى تعبئة الحقول التالية بدقة. شكراً لتعاونكم.</p>
                 </header>
-                <form id="teacher-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
-                    <!-- Form fields -->
+                <form id="teacher-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                    
+                    <!-- School Type Selector (Main Controller) -->
                     <div class="md:col-span-2">
-                        <label for="fullName" class="block mb-2 font-medium text-gray-700">الاسم الكامل</label>
-                        <input type="text" id="fullName" name="الاسم الكامل" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="civilId" class="block mb-2 font-medium text-gray-700">الرقم المدني</label>
-                        <input type="text" id="civilId" name="الرقم المدني" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="phone" class="block mb-2 font-medium text-gray-700">رقم الهاتف</label>
-                        <input type="tel" id="phone" name="رقم الهاتف" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label for="email" class="block mb-2 font-medium text-gray-700">البريد الإلكتروني</label>
-                        <input type="email" id="email" name="البريد الإلكتروني" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <!-- Other fields -->
-                    <div>
-                        <label for="qualification" class="block mb-2 font-medium text-gray-700">المؤهل الدراسي</label>
-                        <input type="text" id="qualification" name="المؤهل الدراسي" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="specialization" class="block mb-2 font-medium text-gray-700">التخصص</label>
-                        <input type="text" id="specialization" name="التخصص" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="graduationYear" class="block mb-2 font-medium text-gray-700">سنة التخرج</label>
-                        <input type="number" id="graduationYear" name="سنة التخرج" class="form-input w-full p-3 border border-gray-300 rounded-lg" min="1950" max="2050" required>
-                    </div>
-                    <div>
-                        <label for="university" class="block mb-2 font-medium text-gray-700">الجامعة/الكلية</label>
-                        <input type="text" id="university" name="الجامعة/الكلية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="experienceYears" class="block mb-2 font-medium text-gray-700">سنوات الخبرة</label>
-                        <input type="number" id="experienceYears" name="سنوات الخبرة في التدريس" class="form-input w-full p-3 border border-gray-300 rounded-lg" min="0" required>
-                    </div>
-                     <div>
-                        <label for="subjects" class="block mb-2 font-medium text-gray-700">المواد التي يدرسها</label>
-                        <input type="text" id="subjects" name="المواد التي يدرسها" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="schoolLevel" class="block mb-2 font-medium text-gray-700">المرحلة الدراسية</label>
-                        <input type="text" id="schoolLevel" name="المرحلة الدراسية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div>
-                        <label for="currentSchool" class="block mb-2 font-medium text-gray-700">المدرسة الحالية</label>
-                        <input type="text" id="currentSchool" name="اسم المدرسة الحالية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <!-- NEW FIELD FOR SCHOOL TYPE -->
-                    <div class="md:col-span-2">
-                        <label for="schoolType" class="block mb-2 font-medium text-gray-700">نوع المدرسة</label>
+                        <label for="schoolType" class="block mb-2 font-medium text-gray-700">نوع المدرسة<span class="text-red-500">*</span></label>
                         <select id="schoolType" name="نوع المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white" required>
-                            <option value="" disabled selected>-- اختر نوع المدرسة --</option>
+                            <option value="" disabled selected>-- يرجى اختيار نوع المدرسة أولاً --</option>
                             <option value="حكومية">مدرسة حكومية</option>
                             <option value="خاصة">مدرسة خاصة</option>
                         </select>
                     </div>
-                     <div class="md:col-span-2">
-                        <label for="address" class="block mb-2 font-medium text-gray-700">العنوان</label>
-                        <input type="text" id="address" name="العنوان" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label for="notes" class="block mb-2 font-medium text-gray-700">ملاحظات (اختياري)</label>
-                        <textarea id="notes" name="ملاحظات" rows="3" class="form-input w-full p-3 border border-gray-300 rounded-lg"></textarea>
+
+                    <!-- Fields Container for Private Schools -->
+                    <div id="private-fields-container" class="hidden md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                        <!-- Private school fields will be injected here by JS -->
                     </div>
 
-                    <div class="md:col-span-2 text-center mt-4">
+                    <!-- Fields Container for Government Schools -->
+                    <div id="gov-fields-container" class="hidden md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                        <!-- Government school fields will be injected here by JS -->
+                    </div>
+
+                    <!-- Common Submit Button -->
+                    <div id="submit-container" class="md:col-span-2 text-center mt-6 hidden">
                         <button type="submit" id="submit-btn" class="bg-blue-600 text-white w-full sm:w-auto font-bold py-3 px-16 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                             <i class="fas fa-paper-plane mr-2"></i>إرسال البيانات
                         </button>
@@ -133,12 +87,98 @@
         const successMessage = document.getElementById('success-message');
         const form = document.getElementById('teacher-form');
         const submitBtn = document.getElementById('submit-btn');
+        const schoolTypeSelect = document.getElementById('schoolType');
+        const privateFieldsContainer = document.getElementById('private-fields-container');
+        const govFieldsContainer = document.getElementById('gov-fields-container');
+        const submitContainer = document.getElementById('submit-container');
+
+        // --- Field Definitions ---
+        const privateFieldsHTML = `
+            <div><label for="wilaya_private" class="block mb-2 font-medium text-gray-700">الولاية<span class="text-red-500">*</span></label><select id="wilaya_private" name="الولاية" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر الولاية</option><option value="السيب">السيب</option><option value="بوشر">بوشر</option><option value="مطرح">مطرح</option><option value="العامرات">العامرات</option><option value="مسقط">مسقط</option></select></div>
+            <div><label for="schoolName_private" class="block mb-2 font-medium text-gray-700">المدرسة<span class="text-red-500">*</span></label><select id="schoolName_private" name="المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر اسم المدرسة</option><option value="البيان">البيان</option><option value="اجيال الثقافة">اجيال الثقافة</option><option value="الجيل المبدع">الجيل المبدع</option><option value="منابع التفوق">منابع التفوق</option><option value="الصفوة فرع المعبيلة">الصفوة فرع المعبيلة</option><option value="المجد">المجد</option><option value="الفردوس فرع الحيل">الفردوس فرع الحيل</option><option value="المنار">المنار</option><option value="الريادة">الريادة</option><option value="جيفر بن الجلندى">جيفر بن الجلندى</option><option value="ضياء المستقبل">ضياء المستقبل</option><option value="درة مجان">درة مجان</option><option value="مشاعل مسقط فرع سور ال حديد">مشاعل مسقط فرع سور ال حديد</option></select></div>
+            <div class="md:col-span-2"><hr class="my-4"></div>
+            <div class="md:col-span-2"><label for="teacherName_private" class="block mb-2 font-medium text-gray-700">اسم المعلم الثلاثي<span class="text-red-500">*</span></label><input type="text" id="teacherName_private" name="اسم المعلم الثلاثي" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="teacherPhone_private" class="block mb-2 font-medium text-gray-700">هاتف المعلم<span class="text-red-500">*</span></label><input type="tel" id="teacherPhone_private" name="هاتف المعلم" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="nationality_private" class="block mb-2 font-medium text-gray-700">الجنسية<span class="text-red-500">*</span></label><input type="text" id="nationality_private" name="الجنسية" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="qualification_private" class="block mb-2 font-medium text-gray-700">المؤهل العلمي<span class="text-red-500">*</span></label><input type="text" id="qualification_private" name="المؤهل العلمي" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: بكالوريوس</p></div>
+            <div><label for="specialization_private" class="block mb-2 font-medium text-gray-700">التخصص<span class="text-red-500">*</span></label><input type="text" id="specialization_private" name="التخصص" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: معلم مهارات موسيقية...</p></div>
+            <div><label for="classesTaught_private" class="block mb-2 font-medium text-gray-700">الصفوف التي تدرسها<span class="text-red-500">*</span></label><input type="text" id="classesTaught_private" name="الصفوف التي تدرسها" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: (1-12) او (6،5،3،1)</p></div>
+            <div><label for="classCount_private" class="block mb-2 font-medium text-gray-700">عدد الحصص للمعلم</label><select id="classCount_private" name="عدد الحصص للمعلم" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="">اختر عدد الحصص</option>${Array.from({length: 32}, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}</select></div>
+            <div><label for="teachingLanguage_private" class="block mb-2 font-medium text-gray-700">لغة التدريس<span class="text-red-500">*</span></label><select id="teachingLanguage_private" name="لغة التدريس" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر اللغة</option><option value="عربي">عربي</option><option value="انجليزي">انجليزي</option><option value="عربي وانجليزي">عربي وانجليزي</option></select></div>
+            <div><label for="curriculumSystem_private" class="block mb-2 font-medium text-gray-700">نظام المنهاج<span class="text-red-500">*</span></label><select id="curriculumSystem_private" name="نظام المنهاج" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر النظام</option><option value="منهاج حكومي">منهاج حكومي</option><option value="منهاج خاص">منهاج خاص</option><option value="منهاج حكومي + خاص">منهاج حكومي + خاص</option></select></div>
+            <div><label for="evaluationSystem_private" class="block mb-2 font-medium text-gray-700">نظام التقويم<span class="text-red-500">*</span></label><select id="evaluationSystem_private" name="نظام التقويم" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر النظام</option><option value="تقويم حكومي">تقويم حكومي</option><option value="تقويم خاص">تقويم خاص</option><option value="تقويم حكومي + خاص">تقويم حكومي + خاص</option></select></div>
+            <div><label for="maritalStatus_private" class="block mb-2 font-medium text-gray-700">الحالة الاجتماعية<span class="text-red-500">*</span></label><select id="maritalStatus_private" name="الحالة الاجتماعية" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>الرجاء التحديد</option><option value="متزوج">متزوج</option><option value="اعزب">اعزب</option><option value="متزوجة">متزوجة</option><option value="عزباء">عزباء</option></select></div>
+            <div><label for="appointmentApproval_private" class="block mb-2 font-medium text-gray-700">الموافقة على التعيين<span class="text-red-500">*</span></label><select id="appointmentApproval_private" name="الموافقة على التعيين" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر الحالة</option><option value="توجد موافقة">توجد موافقة</option><option value="لا توجد">لا توجد</option><option value="قيد الإجراءات">قيد الإجراءات</option></select></div>
+            <div class="md:col-span-2"><hr class="my-4"></div>
+            <div><label for="managerName_private" class="block mb-2 font-medium text-gray-700">اسم مدير المدرسة<span class="text-red-500">*</span></label><input type="text" id="managerName_private" name="اسم مدير المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="managerPhone_private" class="block mb-2 font-medium text-gray-700">هاتف مدير المدرسة<span class="text-red-500">*</span></label><input type="tel" id="managerPhone_private" name="هاتف مدير المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="schoolLocation_private" class="block mb-2 font-medium text-gray-700">موقع المدرسة<span class="text-red-500">*</span></label><select id="schoolLocation_private" name="موقع المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر الموقع</option><option value="المعبيلة الجنوبية">المعبيلة الجنوبية</option><option value="المعبيلة الشمالية">المعبيلة الشمالية</option><option value="الخوض">الخوض</option><option value="قرية الخوض">قرية الخوض</option><option value="الموالح الجنوبية">الموالح الجنوبية</option><option value="الموالح الشمالية">الموالح الشمالية</option><option value="الحيل الجنوبية">الحيل الجنوبية</option><option value="الحيل الشمالية">الحيل الشمالية</option><option value="سور ال حديد">سور ال حديد</option><option value="حلة النصر">حلة النصر</option><option value="الشرادي">الشرادي</option><option value="الجفنين">الجفنين</option><option value="الرسيل">الرسيل</option><option value="اخرى">اخرى</option></select></div>
+            <div><label for="schoolPhone_private" class="block mb-2 font-medium text-gray-700">هاتف المدرسة الثابت (ان وجد)</label><input type="tel" id="schoolPhone_private" name="هاتف المدرسة الثابت" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+        `;
+
+        const govFieldsHTML = `
+            <div class="md:col-span-2"><label for="teacherName_gov" class="block mb-2 font-medium text-gray-700">اسم المعلم الثلاثي<span class="text-red-500">*</span></label><input type="text" id="teacherName_gov" name="اسم المعلم الثلاثي" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">اضافة (بن) بين كل اسم (للعمانيين).</p></div>
+            <div><label for="fileNumber_gov" class="block mb-2 font-medium text-gray-700">رقم الملف<span class="text-red-500">*</span></label><input type="text" id="fileNumber_gov" name="رقم الملف" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">يمكنك استخراجه من البوابة التعليمية.</p></div>
+            <div><label for="schoolName_gov" class="block mb-2 font-medium text-gray-700">المدرسة<span class="text-red-500">*</span></label><input type="text" id="schoolName_gov" name="المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: انس بن النظر (7-10)</p></div>
+            <div><label for="teacherCount_gov" class="block mb-2 font-medium text-gray-700">عدد معلمي الرياضة في المدرسة<span class="text-red-500">*</span></label><input type="number" id="teacherCount_gov" name="عدد معلمي الرياضة" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="classCount_gov" class="block mb-2 font-medium text-gray-700">عدد الحصص<span class="text-red-500">*</span></label><select id="classCount_gov" name="عدد الحصص" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white"><option value="" disabled selected>اختر عدد الحصص</option>${Array.from({length: 36}, (_, i) => `<option value="${i + 3}">${i + 3}</option>`).join('')}<option value="لم يتم توزيع الجدول بعد">لم يتم توزيع الجدول بعد</option></select></div>
+            <div><label for="classesTaught_gov" class="block mb-2 font-medium text-gray-700">الفصول التي تدرسها<span class="text-red-500">*</span></label><input type="text" id="classesTaught_gov" name="الفصول التي تدرسها" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: 12،11</p></div>
+            <div><label for="teacherPhone_gov" class="block mb-2 font-medium text-gray-700">الهاتف<span class="text-red-500">*</span></label><input type="tel" id="teacherPhone_gov" name="الهاتف" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="appointmentYear_gov" class="block mb-2 font-medium text-gray-700">سنة التعيين<span class="text-red-500">*</span></label><input type="number" id="appointmentYear_gov" name="سنة التعيين" class="form-input w-full p-3 border border-gray-300 rounded-lg" min="1950" max="2050"><p class="text-sm text-gray-500 mt-1">مثال: 2018</p></div>
+            <div><label for="qualification_gov" class="block mb-2 font-medium text-gray-700">المؤهل<span class="text-red-500">*</span></label><input type="text" id="qualification_gov" name="المؤهل" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="civilId_gov" class="block mb-2 font-medium text-gray-700">الرقم المدني<span class="text-red-500">*</span></label><input type="text" id="civilId_gov" name="الرقم المدني" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="financialGrade_gov" class="block mb-2 font-medium text-gray-700">الدرجة المالية<span class="text-red-500">*</span></label><input type="text" id="financialGrade_gov" name="الدرجة المالية" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">ارقام فقط</p></div>
+            <div><label for="university_gov" class="block mb-2 font-medium text-gray-700">الجامعة<span class="text-red-500">*</span></label><input type="text" id="university_gov" name="الجامعة" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="currentAddress_gov" class="block mb-2 font-medium text-gray-700">السكن الحالي<span class="text-red-500">*</span></label><input type="text" id="currentAddress_gov" name="السكن الحالي" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">السكن القريب من جهة عملك</p></div>
+            <div><label for="dob_gov" class="block mb-2 font-medium text-gray-700">تاريخ الميلاد<span class="text-red-500">*</span></label><input type="date" id="dob_gov" name="تاريخ الميلاد" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="wilaya_gov" class="block mb-2 font-medium text-gray-700">الولاية<span class="text-red-500">*</span></label><input type="text" id="wilaya_gov" name="الولاية" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">الولاية التي بها المدرسة</p></div>
+            <div><label for="permanentAddress_gov" class="block mb-2 font-medium text-gray-700">العنوان الدائم للمعلم<span class="text-red-500">*</span></label><input type="text" id="permanentAddress_gov" name="العنوان الدائم للمعلم" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: معلم يعمل في السيب ويقيم في صلالة...</p></div>
+            <div><label for="maritalStatus_gov" class="block mb-2 font-medium text-gray-700">الحالة الاجتماعية وعدد الأبناء<span class="text-red-500">*</span></label><input type="text" id="maritalStatus_gov" name="الحالة الاجتماعية وعدد الأبناء" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">مثال: متزوج + 5 أبناء</p></div>
+            <div><label for="email_gov" class="block mb-2 font-medium text-gray-700">البريد الالكتروني<span class="text-red-500">*</span></label><input type="email" id="email_gov" name="البريد الالكتروني" class="form-input w-full p-3 border border-gray-300 rounded-lg"><p class="text-sm text-gray-500 mt-1">البريد الوزاري ان امكن</p></div>
+            <div class="md:col-span-2"><hr class="my-4"></div>
+            <div><label for="managerName_gov" class="block mb-2 font-medium text-gray-700">اسم مدير المدرسة<span class="text-red-500">*</span></label><input type="text" id="managerName_gov" name="اسم مدير المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+            <div><label for="managerPhone_gov" class="block mb-2 font-medium text-gray-700">هاتف مدير المدرسة<span class="text-red-500">*</span></label><input type="tel" id="managerPhone_gov" name="هاتف مدير المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg"></div>
+        `;
         
-        const headers = [
-            "الاسم الكامل", "الرقم المدني", "رقم الهاتف", "البريد الإلكتروني",
-            "المؤهل الدراسي", "التخصص", "سنة التخرج", "الجامعة/الكلية",
-            "سنوات الخبرة في التدريس", "المواد التي يدرسها", "المرحلة الدراسية",
-            "اسم المدرسة الحالية", "نوع المدرسة", "العنوان", "ملاحظات"
+        // --- Dynamic Form Logic ---
+        schoolTypeSelect.addEventListener('change', (e) => {
+            const type = e.target.value;
+            
+            privateFieldsContainer.innerHTML = '';
+            govFieldsContainer.innerHTML = '';
+            
+            privateFieldsContainer.classList.add('hidden');
+            govFieldsContainer.classList.add('hidden');
+            
+            if (type === 'خاصة') {
+                privateFieldsContainer.innerHTML = privateFieldsHTML;
+                privateFieldsContainer.classList.remove('hidden');
+                privateFieldsContainer.querySelectorAll('input, select').forEach(el => {
+                    if(el.name) el.required = true;
+                });
+            } else if (type === 'حكومية') {
+                govFieldsContainer.innerHTML = govFieldsHTML;
+                govFieldsContainer.classList.remove('hidden');
+                 govFieldsContainer.querySelectorAll('input, select').forEach(el => {
+                    if(el.name) el.required = true;
+                });
+            }
+
+            if (type) {
+                submitContainer.classList.remove('hidden');
+            } else {
+                submitContainer.classList.add('hidden');
+            }
+        });
+
+        // --- Form Submission ---
+        const allHeaders = [
+            "نوع المدرسة", "الولاية", "المدرسة", "اسم المعلم الثلاثي", "هاتف المعلم", "الجنسية", "المؤهل العلمي", 
+            "التخصص", "الصفوف التي تدرسها", "عدد الحصص للمعلم", "لغة التدريس", "نظام المنهاج", "نظام التقويم", 
+            "الحالة الاجتماعية", "الموافقة على التعيين", "اسم مدير المدرسة", "هاتف مدير المدرسة", "موقع المدرسة", 
+            "هاتف المدرسة الثابت", "رقم الملف", "الرقم المدني", "الدرجة المالية", "سنة التعيين", "الجامعة", 
+            "السكن الحالي", "تاريخ الميلاد", "العنوان الدائم للمعلم", "الحالة الاجتماعية وعدد الأبناء", 
+            "البريد الالكتروني", "عدد معلمي الرياضة"
         ];
 
         form.addEventListener('submit', async (e) => {
@@ -149,11 +189,17 @@
             }
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin mr-2"></i> جاري الإرسال...`;
+            
             const formData = new FormData(form);
             const teacherData = {};
-            headers.forEach(header => {
-                teacherData[header] = formData.get(header);
+            
+            allHeaders.forEach(header => {
+                const value = formData.get(header);
+                if (value !== null && value !== '') {
+                    teacherData[header] = value;
+                }
             });
+
             try {
                 await addDoc(collection(db, "teachers"), teacherData);
                 formWrapper.classList.add('hidden');
