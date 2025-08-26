@@ -13,10 +13,7 @@
             background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
         }
         .form-input.invalid {
-            border-color: #ef4444;
-        }
-        .form-input.valid {
-            border-color: #22c55e;
+            border-color: #ef4444; /* red-500 */
         }
     </style>
 </head>
@@ -33,6 +30,7 @@
                     <p class="text-gray-600 mt-2">يرجى تعبئة الحقول التالية بدقة. شكراً لتعاونكم.</p>
                 </header>
                 <form id="teacher-form" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                    <!-- Form fields -->
                     <div class="md:col-span-2">
                         <label for="fullName" class="block mb-2 font-medium text-gray-700">الاسم الكامل</label>
                         <input type="text" id="fullName" name="الاسم الكامل" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
@@ -49,6 +47,7 @@
                         <label for="email" class="block mb-2 font-medium text-gray-700">البريد الإلكتروني</label>
                         <input type="email" id="email" name="البريد الإلكتروني" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
                     </div>
+                    <!-- Other fields -->
                     <div>
                         <label for="qualification" class="block mb-2 font-medium text-gray-700">المؤهل الدراسي</label>
                         <input type="text" id="qualification" name="المؤهل الدراسي" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
@@ -81,14 +80,24 @@
                         <label for="currentSchool" class="block mb-2 font-medium text-gray-700">المدرسة الحالية</label>
                         <input type="text" id="currentSchool" name="اسم المدرسة الحالية" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
                     </div>
+                    <!-- NEW FIELD FOR SCHOOL TYPE -->
+                    <div class="md:col-span-2">
+                        <label for="schoolType" class="block mb-2 font-medium text-gray-700">نوع المدرسة</label>
+                        <select id="schoolType" name="نوع المدرسة" class="form-input w-full p-3 border border-gray-300 rounded-lg bg-white" required>
+                            <option value="" disabled selected>-- اختر نوع المدرسة --</option>
+                            <option value="حكومية">مدرسة حكومية</option>
+                            <option value="خاصة">مدرسة خاصة</option>
+                        </select>
+                    </div>
                      <div class="md:col-span-2">
                         <label for="address" class="block mb-2 font-medium text-gray-700">العنوان</label>
-                        <input type="text" id="address" name="العنوان" class="form-input w-full p-3 border border-gray-300 rounded-lg">
+                        <input type="text" id="address" name="العنوان" class="form-input w-full p-3 border border-gray-300 rounded-lg" required>
                     </div>
                     <div class="md:col-span-2">
-                        <label for="notes" class="block mb-2 font-medium text-gray-700">ملاحظات</label>
+                        <label for="notes" class="block mb-2 font-medium text-gray-700">ملاحظات (اختياري)</label>
                         <textarea id="notes" name="ملاحظات" rows="3" class="form-input w-full p-3 border border-gray-300 rounded-lg"></textarea>
                     </div>
+
                     <div class="md:col-span-2 text-center mt-4">
                         <button type="submit" id="submit-btn" class="bg-blue-600 text-white w-full sm:w-auto font-bold py-3 px-16 rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
                             <i class="fas fa-paper-plane mr-2"></i>إرسال البيانات
@@ -129,7 +138,7 @@
             "الاسم الكامل", "الرقم المدني", "رقم الهاتف", "البريد الإلكتروني",
             "المؤهل الدراسي", "التخصص", "سنة التخرج", "الجامعة/الكلية",
             "سنوات الخبرة في التدريس", "المواد التي يدرسها", "المرحلة الدراسية",
-            "اسم المدرسة الحالية", "العنوان", "ملاحظات"
+            "اسم المدرسة الحالية", "نوع المدرسة", "العنوان", "ملاحظات"
         ];
 
         form.addEventListener('submit', async (e) => {
